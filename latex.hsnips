@@ -26,14 +26,12 @@ function math(context) {
 }
 endglobal
 
-context math(context)
-
-
 # == Quality of Life ==
 snippet dss "displaystyle on" iAM
 \\displaystyle
 endsnippet
 
+context math(context)
 snippet text "text field" iAM
 \\text{$1}
 endsnippet
@@ -60,18 +58,22 @@ snippet invs "inverse" iAM
 ^{-1}
 endsnippet
 
+context math(context)
 snippet rd "power" iAM
 ^{$1}
 endsnippet
 
+context math(context)
 snippet sr "square" iAM
 ^{2}
 endsnippet
 
+context math(context)
 snippet cb "cube" iAM
 ^{3}
 endsnippet
 
+context math(context)
 snippet sq "square root" iAM
 \\sqrt{$1}$0
 endsnippet
@@ -90,6 +92,7 @@ endsnippet
 
 # == Sets and Brackets ==
 
+context math(context)
 snippet set "set" iAM
 \\{$1\\}$S0
 endsnippet
