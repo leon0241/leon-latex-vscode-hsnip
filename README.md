@@ -1,1 +1,0 @@
-# leon-latex-vscode-hsnip
