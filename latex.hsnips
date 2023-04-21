@@ -1,0 +1,414 @@
+snippet dm "Latex" iAM
+\$\$$0\$\$
+endsnippet
+
+snippet mk "LatexInline" iAM
+\$$1\$$2
+endsnippet
+
+global
+function math(context) {
+    return context.scopes.some(s => s.startsWith("meta.math"));
+}
+endglobal
+
+context math(context)
+
+# == Quality of Life ==
+snippet dss "displaystyle on" iAM
+\\displaystyle
+endsnippet
+
+# == Fraction Match ==
+snippet // "altfrac" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet `((\d+)|(\d*)(\\)?([A-Za-z!]+)((\^|_)(\{\d+\}|\d))*)/` "Fraction no ()" iAm
+\frac{``rv = m[1]``}{$1}$0
+endsnippet
+
+priority 200
+snippet `(?<=\s)(\\mu|\\alpha|\\sigma|\\rho|\\beta|\\gamma|\\delta|\\zeta|\\eta|\\varepsilon|\\theta|\\iota|\\kappa|\\vartheta|\\lambda|\\nu|\\pi|\\rho|\\tau|\\upsilon|\\phi|\\chi|\\psi|\\omega|\\Gamma|\\Delta|\\Theta|\\Lambda|\\Xi|\\Pi|\\Sigma|\\Upsilon|\\Phi|\\Psi|\\Omega|[A-Za-z]{1,2})?(_[A-Za-z0-9]|_\{[^}]+\})?(\^[A-Za-z0-9]|\^\{[^}]+\})?(_[A-Za-z0-9]|_\{[^}]+\})?(\([^)]+\))(_[A-Za-z0-9]|_\{[^}]+\})?(\^[A-Za-z0-9]|\^\{[^}]+\})?(_[A-Za-z0-9]|_\{[^}]+\})?\/` "Fraction with ()" iAm
+``rv = "\\frac{" + m.slice(1, m.length).join('') + "}{$1}$2"``
+endsnippet
+
+# == Powers ==
+
+snippet invs "inverse" iA
+^{-1}
+endsnippet
+
+snippet rd "power" iAM
+^{$1}
+endsnippet
+
+snippet sr "square" iAM
+^{2}
+endsnippet
+
+snippet cb "cube" iAM
+^{3}
+endsnippet
+
+snippet sq "square root" iAM
+\\sqrt{$1}$0
+endsnippet
+
+# == Subscript ==
+
+snippet `([^\d\s]+)\d` "Subscript any symbol if digit after" iAM
+``rv = m[0].slice(0, -1) + "_{" + m[0].slice(-1) + "}"``
+endsnippet
+
+snippet _ "Subscript" iAM
+_{$1}
+endsnippet
+
+# == Sets and Brackets ==
+
+snippet set "set" iAM
+\\{$1\\}$S0
+endsnippet
+
+
+snippet norm "|a|" iAM
+\\lvert $1\\rvert $S0
+endsnippet
+
+snippet avg "<a>" iAM
+\\langle $1\\rangle $S0
+endsnippet
+
+snippet lr() "left right brackets" iAM
+\\left( $1 \\right) $0
+endsnippet
+
+snippet lr| "left right pip" iAM
+\\left| $1 \\right| $0
+endsnippet
+
+snippet lr[] "left right square bracket" iAM
+\\left[ $1 \\right] $0
+endsnippet
+
+# == Integrals ==
+
+snippet int "no lim integral" iaM
+\\int $0
+endsnippet
+
+snippet iint "no lim double integral" iaM
+\\iint $0
+endsnippet
+
+snippet iiint "no lim triple integral" iaM
+\\iiint $0
+endsnippet
+
+snippet 0int "no lim circle integral" iaM
+\\oint $0
+endsnippet
+
+snippet cint "choose bounds integral" iAM
+\\int_{${1:0}}^{${2:\infty}} $0
+endsnippet
+
+snippet intzi "zero to infinity integral" iAM
+\\int_{0}^{\infty} $0
+endsnippet
+
+snippet intii "infinity to infinity integral" iAM
+\\int_{-\infty}^{\infty} $0
+endsnippet
+
+# == Sums and Limits ==
+
+snippet csum "choose bounds sum" iAM
+\\sum_{${1:n}=${2:1}}^{${3:\infty}} $0
+endsnippet
+
+snippet sumoi "n = 1 to infinity sum" iAM
+\\sum_{n=1}^{\infty} $0
+endsnippet
+
+snippet sumzi "n = 0 to infinity sum" iAM
+\\sum_{n=0}^{\infty} $0
+endsnippet
+
+snippet clim "choose bounds limit" iAM
+\\lim_{${1:x}\\to ${2:\infty}} $0
+endsnippet
+
+snippet limoi "choose bounds limit" iAM
+\\lim_{1\\to \infty} $0
+endsnippet
+
+# == Environments ==
+
+snippet case "case environment" iAM
+\\begin{cases}
+$1
+\\end{cases}
+endsnippet
+
+snippet align "align environment" iAM
+\\begin{align}
+$1
+\\end{align}
+endsnippet
+
+snippet matrix "matrix environment" iAM
+\\begin{matrix}
+$1
+\\end{matrix}
+endsnippet
+
+priority 1
+snippet pmatrix "parenthesis matrix environment" iAM
+\\begin{pmatrix}
+$1
+\\end{pmatrix}
+endsnippet
+
+priority 1
+snippet bmatrix "square bracket matrix environment" iAM
+\\begin{bmatrix}
+$1
+\\end{bmatrix}
+endsnippet
+
+priority 1
+snippet Bmatrix "curly bracket matrix environment" iAM
+\\begin{matrix}
+$1
+\\end{matrix}
+endsnippet
+
+priority 1
+snippet vmatrix "pipe matrix environment" iAM
+\\begin{vmatrix}
+$1
+\\end{vmatrix}
+endsnippet
+
+priority 1
+snippet Vmatrix "double pipe matrix environment" iAM
+\\begin{Vmatrix}
+$1
+\\end{Vmatrix}
+endsnippet
+
+# Whitespace
+snippet ews "enspace" iAM
+\\enspace
+endsnippet
+
+snippet quws "quad space" iAM
+\\quad
+endsnippet
+
+snippet qquws "double quad space" iAM
+\\qquad
+endsnippet
+
+snippet ,, iAM
+``rv = ",\\,"``
+endsnippet
+
+# == Random stuff ==
+snippet opn "operation X : Y -> Z" iAM
+${1:f}:${2:G}\\to {$3:H} $0
+endsnippet
+
+# == Greek Alphabet ==
+snippet @a iAM
+\\alpha
+endsnippet
+
+snippet @A iAM
+\\Alpha
+endsnippet
+
+snippet @b iAM
+\\beta
+endsnippet
+
+snippet @B iAM
+\\Beta
+endsnippet
+
+snippet @g iAM
+\\gamma
+endsnippet
+
+snippet @G iAM
+\\Gamma
+endsnippet
+
+snippet @d iAM
+\\delta
+endsnippet
+
+snippet @D iAM
+\\Delta
+endsnippet
+
+snippet @e iAM
+\\epsilon
+endsnippet
+
+snippet @E iAM
+\\Epsilon
+endsnippet
+
+snippet :e iAM
+\\varepsilon
+endsnippet
+
+snippet :E iAM
+\\Varepsilon
+endsnippet
+
+snippet @t iAM
+\\theta
+endsnippet
+
+snippet @T iAM
+\\Theta
+endsnippet
+
+snippet @k iAM
+\\kappa
+endsnippet
+
+snippet @K iAM
+\\Kappa
+endsnippet
+
+snippet @l iAM
+\\lambda
+endsnippet
+
+snippet @L iAM
+\\Lambda
+endsnippet
+
+snippet @s iAM
+\\sigma
+endsnippet
+
+snippet @S iAM
+\\Sigma
+endsnippet
+
+snippet @t iAM
+\\tau
+endsnippet
+
+snippet @T iAM
+\\Tau
+endsnippet
+
+snippet @p iAM
+\\phi
+endsnippet
+
+snippet @P iAM
+\\Phi
+endsnippet
+
+snippet :p iAM
+\\varphi
+endsnippet
+
+snippet :P iAM
+\\Varphi
+endsnippet
+
+snippet @y iAM
+\\psi
+endsnippet
+
+snippet @Y iAM
+\\Psi
+endsnippet
+
+snippet @w iAM
+\\omega
+endsnippet
+
+snippet @W iAM
+\\Omega
+endsnippet
+
+
+# == Set and proof notation ==
+snippet sset "subset" iAM
+\\subset
+endsnippet
+
+snippet eqsset "equal subset" iAM
+\\subseteq
+endsnippet
+
+snippet inn iAM
+\\in
+endsnippet
+
+snippet and iAM
+\\cup
+endsnippet
+
+snippet orr iAM
+\\cap
+endsnippet
+
+snippet !> "maps to |->" iAM
+\\mapto
+endsnippet
+
+snippet -> iAM
+\\to
+endsnippet
+
+priority 1
+snippet <-> iAM
+\\leftrightarrow
+endsnippet
+
+snippet => iAM
+\\implies
+endsnippet
+
+snippet =< iAM
+\\impliedby
+endsnippet
+
+snippet iff iAM
+\\iff
+endsnippet
+
+snippet fAll iAM
+\\forall
+endsnippet
+
+snippet Exts iAM
+\\exists
+endsnippet
+
+snippet nExts iAM
+\\nexists
+endsnippet
+
+snippet === iAM
+\\equiv
+endsnippet
+
+snippet ~~ iAM
+\\sim
+endsnippet
+
+snippet `\\sim ~` iAM
+\\approx
+endsnippet
