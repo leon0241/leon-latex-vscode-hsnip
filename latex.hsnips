@@ -1,12 +1,12 @@
-snippet dm "Latex" iAM
+snippet dm "Latex" iA
 \$\$$0\$\$
 endsnippet
 
-snippet mk "LatexInline" iAM
+snippet mk "LatexInline" iA
 \$$1\$
 endsnippet
 
-snippet add;fig "Add a figure" iAM
+snippet add;fig "Add a figure" iAb
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{$1}
@@ -14,6 +14,10 @@ snippet add;fig "Add a figure" iAM
     \label{$3}
 \end{figure}
 $0
+endsnippet
+
+snippet add;pac "Add a package" iAb
+\usepackage{$1}
 endsnippet
 
 global
@@ -167,56 +171,63 @@ endsnippet
 
 # == Environments ==
 
+snippet env "LaTeX environment" iAM
+\\begin{$1}
+    $2
+\\end{$1}
+$0
+endsnippet
+
 snippet case "case environment" iAM
 \\begin{cases}
-$1
+    $1
 \\end{cases}
 endsnippet
 
 snippet align "align environment" iAM
 \\begin{align}
-$1
+    $1
 \\end{align}
 endsnippet
 
 snippet matrix "matrix environment" iAM
 \\begin{matrix}
-$1
+    $1
 \\end{matrix}
 endsnippet
 
 priority 1
 snippet pmatrix "parenthesis matrix environment" iAM
 \\begin{pmatrix}
-$1
+    $1
 \\end{pmatrix}
 endsnippet
 
 priority 1
 snippet bmatrix "square bracket matrix environment" iAM
 \\begin{bmatrix}
-$1
+    $1
 \\end{bmatrix}
 endsnippet
 
 priority 1
 snippet Bmatrix "curly bracket matrix environment" iAM
 \\begin{matrix}
-$1
+    $1
 \\end{matrix}
 endsnippet
 
 priority 1
 snippet vmatrix "pipe matrix environment" iAM
 \\begin{vmatrix}
-$1
+    $1
 \\end{vmatrix}
 endsnippet
 
 priority 1
 snippet Vmatrix "double pipe matrix environment" iAM
 \\begin{Vmatrix}
-$1
+    $1
 \\end{Vmatrix}
 endsnippet
 
