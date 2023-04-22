@@ -1,0 +1,16 @@
+snippet mcell "math cell" b
+context math(context)
+snippet $1 "$2" $3
+$4
+``rv = "endsnippet"``
+
+$0
+endsnippet
+
+snippet cell "regular cell" b
+snippet $1 "$2" $3
+$4
+``rv = "endsnippet"``
+
+$0
+endsnippet
