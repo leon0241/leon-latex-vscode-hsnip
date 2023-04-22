@@ -52,14 +52,14 @@ $0
 \end{thm}
 endsnippet
 
-snippet add;def "Add a Theorem" iA
-\begin{dfn}[${1:Name}]{thm:${2:Label}}{${3:Number}}
+snippet add;def "Add a Definition" iA
+\begin{dfn}[${1:Name}]{def:${2:Label}}{${3:Number}}
 $0
 \end{dfn}
 endsnippet
 
-snippet add;rem "Add a Theorem" iA
-\begin{rem}[${1:Name}]{thm:${2:Label}}{${3:Number}}
+snippet add;rem "Add a Remark" iA
+\begin{rem}[${1:Name}]{rem:${2:Label}}{${3:Number}}
 $0
 \end{rem}
 endsnippet
