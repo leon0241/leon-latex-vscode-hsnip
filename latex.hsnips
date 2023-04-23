@@ -6,7 +6,7 @@ endglobal
 
 
 snippet dm "Latex" iA
-\$\$$0\$\$
+\\[$0\\]
 endsnippet
 
 snippet mk "LatexInline" iA
@@ -50,18 +50,21 @@ snippet add;thm "Add a Theorem" iA
 \begin{thm}[${1:Name}]{thm:${2:Label}}{${3:Number}}
 $0
 \end{thm}
+\vspace{-5pt}
 endsnippet
 
 snippet add;def "Add a Definition" iA
 \begin{dfn}[${1:Name}]{def:${2:Label}}{${3:Number}}
 $0
 \end{dfn}
+\vspace{-5pt}
 endsnippet
 
 snippet add;rem "Add a Remark" iA
 \begin{rem}[${1:Name}]{rem:${2:Label}}{${3:Number}}
 $0
 \end{rem}
+\vspace{-5pt}
 endsnippet
 
 snippet add;item "Add an itemized list" iA
@@ -82,7 +85,7 @@ snippet tii "Italic" iA
 \textit{$1}$0
 endsnippet
 
-snippet `(\*{1,2})(.*)(\*{1,2})toit` "Turn 2 Asterisk into Italic" iA
+snippet `(\*{1,2})(.*)(\*{1,2})toii` "Turn 2 Asterisk into Italic" iA
 ``rv = "\\textit{" + m[0].replaceAll("*", "").slice(0, -4) + "}"``
 endsnippet
 
@@ -90,7 +93,7 @@ snippet tbb "Bold" iA
 \textbf{$1}$0
 endsnippet
 
-snippet `(\*{1,2})(.*)(\*{1,2})tobf` "Turn 2 Asterisk into Italic" iA
+snippet `(\*{1,2})(.*)(\*{1,2})tobb` "Turn 2 Asterisk into Italic" iA
 ``rv = "\\textbf{" + m[0].replaceAll("*", "").slice(0, -4) + "}"``
 endsnippet
 
@@ -342,6 +345,7 @@ snippet quws "quad space" iA
 \\quad
 endsnippet
 
+priority 1
 snippet qquws "double quad space" iA
 \\qquad
 endsnippet
@@ -367,7 +371,7 @@ endsnippet
 
 # == Random stuff ==
 snippet opn "operation X : Y -> Z" iA
-${1:f}:${2:G}\\to ${3:H}$0
+${1:f}: ${2:G}\\to ${3:H}$0
 endsnippet
 
 
@@ -412,10 +416,12 @@ snippet @E iA
 \\Epsilon
 endsnippet
 
+context math(context)
 snippet :e iA
 \\varepsilon
 endsnippet
 
+context math(context)
 snippet :E iA
 \\Varepsilon
 endsnippet
@@ -468,10 +474,12 @@ snippet @P iA
 \\Phi
 endsnippet
 
+context math(context)
 snippet :p iA
 \\varphi
 endsnippet
 
+context math(context)
 snippet :P iA
 \\Varphi
 endsnippet
@@ -494,10 +502,12 @@ endsnippet
 
 
 # == Set and proof notation ==
+priority 1
 snippet sset "subset" iA
 \\subset
 endsnippet
 
+priority 2
 snippet eqsset "equal subset" iA
 \\subseteq
 endsnippet
