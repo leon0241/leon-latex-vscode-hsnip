@@ -13,6 +13,11 @@ snippet mk "LatexInline" iA
 \$$1\$
 endsnippet
 
+snippet vnl "vspace 0 new line" iA
+\vspace{0pt}\newline
+$0
+endsnippet
+
 snippet add;fig "Add a figure" iAb
 \begin{figure}[h!]
     \centering
@@ -64,6 +69,13 @@ snippet add;rem "Add a Remark" iA
 \begin{rem}[${1:Name}]{rem:${2:Label}}{${3:Number}}
 $0
 \end{rem}
+\vspace{-5pt}
+endsnippet
+
+snippet add;xmp "Add an example" iA
+\begin{xmp}[${1:Name}]{ex:${2:Label}}{${3:Number}}
+$0
+\end{xmp}
 \vspace{-5pt}
 endsnippet
 
@@ -168,7 +180,7 @@ endsnippet
 # == Subscript ==
 
 context math(context)
-snippet `([^\d\s\$\{\}\[\]\(\)]+)\d` "Subscript any symbol if digit after" iA
+snippet `([^\d\s\$\{\}\[\]\(\)\-]+)\d` "Subscript any symbol if digit after" iA
 ``rv = m[0].slice(0, -1) + "_{" + m[0].slice(-1) + "}"``
 endsnippet
 
@@ -351,7 +363,7 @@ snippet qquws "double quad space" iA
 endsnippet
 
 snippet ,, iA
-``rv = ",\\,"``
+``rv = ",\\, "``
 endsnippet
 
 
