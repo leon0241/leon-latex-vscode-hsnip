@@ -2,8 +2,13 @@ global
 function math(context) {
     return context.scopes.some(s => s.startsWith("meta.math"));
 }
+
+function environment(context) {
+    return context.scopes.some(s => s.startsWith("meta.function.environment.math.latex"));
+}
 endglobal
 
+# == Insert a math mode ==
 
 snippet dm "Latex" iA
 \\[$0\\]
@@ -12,6 +17,8 @@ endsnippet
 snippet mk "LatexInline" iA
 \$$1\$
 endsnippet
+
+# == Insert various LaTeX commands ==
 
 snippet vnl "vspace 0 new line" iA
 \vspace{0pt}\newline
@@ -51,6 +58,16 @@ $0
 \end{multicols}
 endsnippet
 
+snippet add;item "Add an itemized list" iA
+\renewcommand\labelitemi{\tiny$\bullet$}
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item $0
+\end{itemize}
+endsnippet
+
+# == Add Theorem Boxes ==
+
 snippet add;thm "Add a Theorem" iA
 \begin{thm}[${1:Name}]{thm:${2:Label}}{${3:Number}}
 $0
@@ -77,14 +94,6 @@ snippet add;xmp "Add an example" iA
 $0
 \end{xmp}
 \vspace{-5pt}
-endsnippet
-
-snippet add;item "Add an itemized list" iA
-\renewcommand\labelitemi{\tiny$\bullet$}
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item $0
-\end{itemize}
 endsnippet
 
 # context itemize(context)
@@ -180,7 +189,8 @@ endsnippet
 # == Subscript ==
 
 context math(context)
-snippet `([^\d\s\$\{\}\[\]\(\)\-]+)\d` "Subscript any symbol if digit after" iA
+# snippet `([^\d\s\$\{\}\[\]\(\)\-]+)\d` "Subscript any symbol if digit after" iA
+snippet `([A-Za-z]+)\d` "Subscript any symbol if digit after" iA
 ``rv = m[0].slice(0, -1) + "_{" + m[0].slice(-1) + "}"``
 endsnippet
 
@@ -301,9 +311,9 @@ endsnippet
 
 context math(context)
 snippet align "align environment" iA
-\\begin{align}
+\\begin{aligned}
     $1
-\\end{align}
+\\end{aligned}
 endsnippet
 
 context math(context)
@@ -347,6 +357,12 @@ snippet Vmatrix "double pipe matrix environment" iA
     $1
 \\end{Vmatrix}
 endsnippet
+
+# context environment(context) 
+# snippet `.\n` "new line in environment" iAM
+# \\\\
+# $0
+# endsnippet
 
 # Whitespace
 snippet ews "enspace" iA
