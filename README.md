@@ -1,2 +1,2 @@
 # vscode hsnip for latex
-for use with [hsnips](https://github.com/eytienne/hsnips)
+for use with [hsnips](https://github.com/draivin/hsnips)
